@@ -1,6 +1,6 @@
 {
   "name": "iconfont-extract",
-  "version": "0.0.2-alpha.1",
+  "version": "0.0.2-alpha.2",
   "description": "> TODO: description",
   "author": "tangzx <tangzx@akulaku.com>",
   "homepage": "https://github.com/abelce/iconfont-tool#readme",
@@ -40,13 +40,13 @@
   "devDependencies": {
     "@ant-design/icons": "^5.0.1",
     "@types/node": "^18.16.3",
-    "tslib": "^2.5.0",
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react-dom": ">=16.9.0",
+    "tslib": "^2.5.0"
   },
   "dependencies": {
     "prettier": "^2.8.8",
-    "typescript": "^5.0.4",
-    "tslib": "^2.5.0"
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4"
   }
 }
