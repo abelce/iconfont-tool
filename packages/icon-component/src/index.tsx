@@ -1,12 +1,6 @@
-import React from "react";
+import Context from "./Context";
 
-import { IconCreatorProps } from "./types";
+export { default } from "./Icon";
 
-const IconComponent = (props: IconCreatorProps): JSX.Element => {
-    const {component: Component} = props;
-    return <span className="icon ">
-        {<Component />}
-    </span>
-}
-
-export default IconComponent;
+const IconProvider = Context.Provider;
+export { IconProvider };

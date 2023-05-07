@@ -1,0 +1,13 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   globs: [ 'packages/icon-component' ],
+0 silly argv   lernaVersion: '5.1.8',
+0 silly argv   '$0': '/opt/homebrew/bin/lerna',
+0 silly argv   pkg: 'className'
+0 silly argv }
+1 notice cli v5.1.8
+2 verbose rootPath /Users/tangzx/work/iconfont-tool
+3 error HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/className - Not found
+3 error     at /Users/tangzx/.config/yarn/global/node_modules/pacote/node_modules/npm-registry-fetch/lib/check-response.js:93:15
+3 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+3 error     at async RegistryFetcher.packument (/Users/tangzx/.config/yarn/global/node_modules/pacote/lib/registry.js:92:19)
