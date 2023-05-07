@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/icons-react"
   ],
   "devDependencies": {
     "@ant-design/icons": "^5.0.1",
