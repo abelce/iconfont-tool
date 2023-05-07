@@ -1,0 +1,35 @@
+{
+  "name": "icon-component",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "tangzx <tangzx@akulaku.com>",
+  "homepage": "https://github.com/abelce/iconfont-tool#readme",
+  "license": "ISC",
+  "main": "lib/icon-component.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abelce/iconfont-tool.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/abelce/iconfont-tool/issues"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "react": "^18.2.0"
+  }
+}

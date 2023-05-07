@@ -1,0 +1,24 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "lerna": "^6.6.2"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "bootstrap:china": "lerna bootstrap --registry=https://registry.npmmirror.com",
+    "icons:build": "lerna run --scope iconfont-extract build",
+    "react:ci": "lerna run --scope @ant-design/icons ci",
+    "lint": "lerna run lint"
+  },
+  "dependencies": {
+    "-": "0.0.1",
+    "@types/node": "^20.1.0",
+    "D": "^1.0.0"
+  }
+}

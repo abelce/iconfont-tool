@@ -1,0 +1,52 @@
+{
+  "name": "iconfont-extract",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "tangzx <tangzx@akulaku.com>",
+  "homepage": "https://github.com/abelce/iconfont-tool#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "bin": {
+    "iconfont-extract": "./bin/index.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "dist",
+    "bin",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abelce/iconfont-tool.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "clean": "tsc --build --clean",
+    "build": "npm run clean && tsc --build",
+    "prerelease": "npm version prerelease --preid=alpha"
+  },
+  "bugs": {
+    "url": "https://github.com/abelce/iconfont-tool/issues"
+  },
+  "peerDependencies": {
+    "@ant-design/icons": ">=4.7.0",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "@types/node": "^18.16.3",
+    "tslib": "^2.5.0",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "dependencies": {
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4",
+    "tslib": "^2.5.0"
+  }
+}
