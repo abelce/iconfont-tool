@@ -123,12 +123,8 @@ const iconfontEXtract = async (options: Options) => {
   removeDir(outDir);
   mkdirRecursive(outDir);
 
-
-  // load data
   const iconfontStr = await loadIconfontStr(config.url);
   const svgInfo = createSVGFromSymbol(config.prefix || "", iconfontStr);
-
-
 
   if (svgInfo.length) {
     await saveSvgList(outDir, svgInfo);
@@ -145,7 +141,10 @@ const run = () => {
   if (!config.url) {
     throw new Error("iconfontEXtract: url is required");
   }
-
+  // add http prefix
+  if (!config.url.startsWith("http:")) {
+    config.url = `http:${config.url}`;
+  }
   iconfontEXtract(config);
 };
 
