@@ -1,9 +1,13 @@
-import { IBundleOptions } from "father-build/src/types";
+import { defineConfig } from 'father';
 
-const config: IBundleOptions = {
-  cjs: "babel",
-  esm: "babel",
-  pkgs: ["icon-component"],
-};
-
-export default config;
+export default defineConfig({
+  // more father config: https://github.com/umijs/father/blob/master/docs/config.md
+  esm: {
+    transformer: 'babel',
+    output: 'es',
+  },
+  cjs: {
+    transformer: 'babel',
+    output: 'lib',
+  },
+});

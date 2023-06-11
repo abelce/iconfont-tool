@@ -1,19 +1,22 @@
 ---
 hero:
-  title: iconfont-tool
-  desc: iconfont-tool
+  title: library
+  description: A react library developed with dumi
   actions:
-    - text: Getting Started
-      link: /design
+    - text: Hello
+      link: /
+    - text: World
+      link: /
 features:
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
-    title: iconfont-extract
-    desc: iconfont-extract
-    link: /iconfont-extract
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/d60657df-0822-4631-9d7c-e7a869c2f21c/k79dmz3q_w126_h126.png
-    title: iconfont-extract-icon
-    desc: iconfont-extract-icon
-    link: /iconfont-extract-icon
+  - title: Hello
+    emoji: 💎
+    description: Put hello description here
+  - title: World
+    emoji: 🌈
+    description: Put world description here
+  - title: '!'
+    emoji: 🚀
+    description: Put ! description here
 ---
 
-# iconfont-tool
+iconfont-tool
