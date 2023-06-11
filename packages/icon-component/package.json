@@ -1,18 +1,22 @@
 {
-  "name": "icon-component",
+  "name": "iconfont-extract-icon",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "tangzx <tangzx@akulaku.com>",
   "homepage": "https://github.com/abelce/iconfont-tool#readme",
   "license": "ISC",
-  "main": "lib/icon-component.js",
+  "main": "lib/index.js",
+	"module": "es/index.js",
+	"types": "lib/index.js",
   "directories": {
     "lib": "lib",
-    "test": "__tests__"
+    "test": "__tests__",
+    "build": "father-build"
   },
   "files": [
-    "lib"
-  ],
+		"es",
+		"lib"
+	],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abelce/iconfont-tool.git"

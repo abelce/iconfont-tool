@@ -50,7 +50,7 @@ export function removeDir(path: string) {
 export const genSvgComponent = (name: string, svgStr: string) => {
   return `
         import React from 'react';
-        import Icon from '@ant-design/icons';
+        import Icon from 'iconfont-extract-icon';
         
         import { IconProps } from '../../types';
         import ${name}Svg from "../../svgs/${name}";

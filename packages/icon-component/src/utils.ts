@@ -11,7 +11,7 @@ export const svgBaseProps = {
 };
 
 export const iconStyles = `
-.anticon {
+.icon {
   display: inline-block;
   color: inherit;
   font-style: normal;
@@ -24,28 +24,24 @@ export const iconStyles = `
   -moz-osx-font-smoothing: grayscale;
 }
 
-.anticon > * {
+.icon > * {
   line-height: 1;
 }
 
-.anticon svg {
+.icon svg {
   display: inline-block;
 }
 
-.anticon::before {
+.icon::before {
   display: none;
 }
 
-.anticon .anticon-icon {
-  display: block;
-}
-
-.anticon[tabindex] {
+.icon[tabindex] {
   cursor: pointer;
 }
 
-.anticon-spin::before,
-.anticon-spin {
+.icon-spin::before,
+.icon-spin {
   display: inline-block;
   -webkit-animation: loadingCircle 1s infinite linear;
   animation: loadingCircle 1s infinite linear;
@@ -71,11 +67,11 @@ export const useInsertStyles = (styleStr: string = iconStyles) => {
   let mergedStyleStr = styleStr;
 
   if (prefixCls) {
-    mergedStyleStr = mergedStyleStr.replace(/anticon/g, prefixCls);
+    mergedStyleStr = mergedStyleStr.replace(/icon/g, prefixCls);
   }
 
   useEffect(() => {
-    updateCSS(mergedStyleStr, "@ant-design-icons", {
+    updateCSS(mergedStyleStr, "@iconfont-extract-icon", {
       prepend: true,
       csp,
     });
