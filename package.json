@@ -15,7 +15,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "father build",
+    "build": "father build && npm run icons:build",
     "build:watch": "father dev",
     "dev": "dumi dev",
     "docs:build": "dumi build",
@@ -27,6 +27,7 @@
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
+    "publish": "npm run prepublishOnly && lerna publish",
     "start": "npm run dev"
   },
   "commitlint": {
