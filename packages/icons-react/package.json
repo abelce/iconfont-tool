@@ -1,6 +1,6 @@
 {
   "name": "iconfont-extract",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "> TODO: description",
   "homepage": "https://github.com/abelce/iconfont-tool#readme",
   "bugs": {
@@ -27,7 +27,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "npm run clean && tsc --build",
+    "build": "tsc --build",
     "clean": "tsc --build --clean",
     "prerelease": "npm version prerelease --preid=alpha",
     "test": "echo \"Error: run tests from root\" && exit 1"

@@ -1,4 +1,4 @@
-45 error Error: Command failed with exit code 1: git commit -F /private/var/folders/3d/t45z5w7j3yvc5dcj94m33_tm0000gn/T/dd9b7538-c11e-49e6-a011-f0c3926fae05/lerna-commit.txt
+45 error Error: Command failed with exit code 1: git commit -F /private/var/folders/3d/t45z5w7j3yvc5dcj94m33_tm0000gn/T/2e920086-6315-449c-bf0d-0e99fbb8b046/lerna-commit.txt
 45 error [STARTED] Preparing lint-staged...
 45 error [SUCCESS] Preparing lint-staged...
 45 error [STARTED] Running tasks for staged files...
@@ -21,8 +21,8 @@
 45 error [SUCCESS] Cleaning up temporary files...
 45 error ⧗   input: Publish
 45 error
-45 error  - iconfont-extract-icon@0.0.2
-45 error  - iconfont-extract@0.0.3
+45 error  - iconfont-extract-icon@0.0.3
+45 error  - iconfont-extract@0.0.4
 45 error ✖   subject may not be empty [subject-empty]
 45 error ✖   type may not be empty [type-empty]
 45 error
