@@ -9,4 +9,4 @@ group:
 
 ## 示例
 
-<code src="iconfont-extract-icon/demos/index.tsx" desc="" title="" hideActions='["CSB"]'></code>
+<code src="iconfont-extract/demos/index.tsx" desc="" title="" hideActions='["CSB"]'></code>

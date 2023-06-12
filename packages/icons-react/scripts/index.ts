@@ -1,18 +1,17 @@
-import http = require("http");
-import { Options } from "./types";
-import { defaultConfig } from "./config";
+import http = require('http');
+import { defaultConfig } from './config';
+import { CONFIG_FILE } from './constants';
+import { Options } from './types';
 import {
   createAndSaveFile,
-  processSvgFileName,
-  mkdirRecursive,
   genSvgComponent,
+  mkdirRecursive,
   normalizeConfig,
+  processSvgFileName,
   removeDir,
-  copyTypes,
-} from "./utils";
-import path = require("path");
-import { CONFIG_FILE } from "./constants";
-const prettier = require("prettier");
+} from './utils';
+import path = require('path');
+const prettier = require('prettier');
 
 const svgReg = /<symbol[^>]*>(<path[^<]*><\/path>)+<\/symbol>/gi;
 
@@ -20,14 +19,14 @@ const svgReg = /<symbol[^>]*>(<path[^<]*><\/path>)+<\/symbol>/gi;
 const loadIconfontStr = async (url: string): Promise<string> => {
   return await new Promise((resolve, reject) => {
     http.get(url, (req) => {
-      let js = "";
-      req.on("data", (data: string) => {
+      let js = '';
+      req.on('data', (data: string) => {
         js += data;
       });
-      req.on("end", () => {
+      req.on('end', () => {
         resolve(js);
       });
-      req.on("error", (e: any) => {
+      req.on('error', (e: any) => {
         reject(e.message);
       });
     });
@@ -35,11 +34,11 @@ const loadIconfontStr = async (url: string): Promise<string> => {
 };
 
 // 将空格/- 去掉，转换成驼峰
-const processSvgNameToArr = (name = ""): string[] => {
+const processSvgNameToArr = (name = ''): string[] => {
   return name
-    .replace(/-/g, " ")
-    .replace(/_/g, " ")
-    .split(" ")
+    .replace(/-/g, ' ')
+    .replace(/_/g, ' ')
+    .split(' ')
     .filter((str) => !!str)
     .map((item) => item.toLowerCase());
 };
@@ -52,18 +51,18 @@ const createSVGFromSymbol = (prefix: string, str: string): Array<string[]> => {
       const idMatchResust = sym.match(/ id="(.*?)" /);
       if (idMatchResust && idMatchResust.length >= 2) {
         const svgNameArr = processSvgNameToArr(
-          idMatchResust[1].replace("icon-", "")
+          idMatchResust[1].replace('icon-', ''),
         );
         svgList.push([
           processSvgFileName([prefix, ...svgNameArr]),
           sym
             .replace(
               /^<symbol/,
-              `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1em" height="1em" `
+              `<svg xmlns="http://www.w3.org/2000/svg" {...props}`,
             )
-            .replace(/<\/symbol>$/, "</svg>")
+            .replace(/<\/symbol>$/, '</svg>')
             // remove id
-            .replace(/ id="(.*?)" /, ""),
+            .replace(/ id="(.*?)" /, ''),
         ]);
       }
     });
@@ -83,11 +82,13 @@ const saveSvgList = async (dir: string, svgList: Array<string[]>) => {
       prettier.format(
         `
       import React from 'react';
-      const ${svgName} = (): JSX.Element => ${data[1]};
+      import { CustomIconComponentProps } from 'iconfont-extract-icon/types';
+
+      const ${svgName} = (props: CustomIconComponentProps): JSX.Element => ${data[1]};
       export default ${svgName};
       `,
-        { parser: "babel-ts" }
-      )
+        { parser: 'babel-ts' },
+      ),
     );
   }
 };
@@ -101,35 +102,35 @@ const genSvgComponents = async (dir: string, svgList: Array<string[]>) => {
 
     await createAndSaveFile(
       path.join(currentIconPath, `/index.tsx`),
-      prettier.format(genSvgComponent(data[0], data[1]), { parser: "babel-ts" })
+      prettier.format(genSvgComponent(data[0]), { parser: 'babel-ts' }),
     );
     indexFileContent.push(
-      `export { default as ${data[0]} } from "./components/${svgComponentName}";`
+      `export { default as ${data[0]} } from "./components/${svgComponentName}";`,
     );
   }
   // indexFileContent.push(
   //   `export { default as IconCreator } from "./components/icon-creator";`
   // );
-  indexFileContent.push('export * from "./types";');
+  // indexFileContent.push('export * from "./types";');
   // create index.ts
-  const indexFilePath = path.join(dir, "index.ts");
-  await createAndSaveFile(indexFilePath, indexFileContent.join("\n"));
+  const indexFilePath = path.join(dir, 'index.ts');
+  await createAndSaveFile(indexFilePath, indexFileContent.join('\n'));
 };
 
 const iconfontEXtract = async (options: Options) => {
   const config = Object.assign({}, defaultConfig, options);
-  const outDir = path.join(process.cwd(), config.outDir || "icons");
-  
+  const outDir = path.join(process.cwd(), config.outDir || 'icons');
+
   removeDir(outDir);
   mkdirRecursive(outDir);
 
   const iconfontStr = await loadIconfontStr(config.url);
-  const svgInfo = createSVGFromSymbol(config.prefix || "", iconfontStr);
+  const svgInfo = createSVGFromSymbol(config.prefix || '', iconfontStr);
 
   if (svgInfo.length) {
     await saveSvgList(outDir, svgInfo);
     await genSvgComponents(outDir, svgInfo);
-    copyTypes(outDir)
+    // copyTypes(outDir)
   }
 };
 
@@ -139,10 +140,10 @@ const run = () => {
   const config = normalizeConfig(configModule.default || configModule);
 
   if (!config.url) {
-    throw new Error("iconfontEXtract: url is required");
+    throw new Error('iconfontEXtract: url is required');
   }
   // add http prefix
-  if (!config.url.startsWith("http:")) {
+  if (!config.url.startsWith('http:')) {
     config.url = `http:${config.url}`;
   }
   iconfontEXtract(config);

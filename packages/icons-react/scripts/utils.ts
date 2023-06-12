@@ -1,8 +1,8 @@
-import fs from "fs";
-import { Options } from "./types";
-import { defaultConfig } from "./config";
-import path from "path";
-const prettier = require("prettier");
+import fs from 'fs';
+import path from 'path';
+import { defaultConfig } from './config';
+import { Options } from './types';
+const prettier = require('prettier');
 
 export const createAndSaveFile = (fileName: string, content: string) => {
   return new Promise<void>((resolve, reject) => {
@@ -23,7 +23,7 @@ export const processSvgFileName = (nameArr: string[]) => {
       }
       return str[0].toUpperCase();
     })
-    .join("");
+    .join('');
 };
 
 // 递归创建目录
@@ -35,8 +35,8 @@ export function removeDir(path: string) {
   let files = [];
   if (fs.existsSync(path)) {
     files = fs.readdirSync(path);
-    files.forEach(function (file, index) {
-      const curPath = path + "/" + file;
+    files.forEach(function (file) {
+      const curPath = path + '/' + file;
       if (fs.statSync(curPath).isDirectory()) {
       } else {
         // delete file
@@ -47,26 +47,26 @@ export function removeDir(path: string) {
 }
 
 // 生成React组件
-export const genSvgComponent = (name: string, svgStr: string) => {
+export const genSvgComponent = (name: string) => {
   return `
         import React from 'react';
         import Icon from 'iconfont-extract-icon';
         
-        import { IconProps } from '../../types';
+        import { IconBaseProps } from 'iconfont-extract-icon/types';
         import ${name}Svg from "../../svgs/${name}";
 
-        const ${name} = (props: IconProps): JSX.Element => {
-          return <Icon component={${name}Svg} {...props} />;
-        }
+        const ${name} =  React.forwardRef<HTMLSpanElement, IconBaseProps>((props, ref): JSX.Element => {
+          return <Icon component={${name}Svg} ref={ref} {...props} />;
+        })
 
         export default ${name};
     `;
 };
 
 export const normalizeConfig = (
-  config: (defaultConfig: Options) => Options | Options
+  config: (defaultConfig: Options) => Options | Options,
 ) => {
-  if (typeof config === "function") {
+  if (typeof config === 'function') {
     return config(defaultConfig);
   }
 
@@ -74,19 +74,10 @@ export const normalizeConfig = (
 };
 
 export const copyTypes = async (dir: string): Promise<void> => {
-  const tyeps = `
-  import { CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
-
-  export type IconProps = Omit<CustomIconComponentProps, "width" | "height" | "fill"> & {
-    width?: string | number;
-    height?: string | number;
-    fill?: string;
-    onClick?: () => void; // 添加点击事件
-  };
-  `
+  const tyeps = ``;
 
   await createAndSaveFile(
     path.join(dir, `/types.ts`),
-    prettier.format(tyeps, { parser: "babel-ts" })
+    prettier.format(tyeps, { parser: 'babel-ts' }),
   );
 };
