@@ -56,10 +56,7 @@ const createSVGFromSymbol = (prefix: string, str: string): Array<string[]> => {
         svgList.push([
           processSvgFileName([prefix, ...svgNameArr]),
           sym
-            .replace(
-              /^<symbol/,
-              `<svg xmlns="http://www.w3.org/2000/svg" {...props}`,
-            )
+            .replace(/^<symbol/, `<svg xmlns="http://www.w3.org/2000/svg" `)
             .replace(/<\/symbol>$/, '</svg>')
             // remove id
             .replace(/ id="(.*?)" /, ''),
@@ -83,8 +80,11 @@ const saveSvgList = async (dir: string, svgList: Array<string[]>) => {
         `
       import React from 'react';
       import { CustomIconComponentProps } from 'iconfont-extract-icon/types';
-
-      const ${svgName} = (props: CustomIconComponentProps): JSX.Element => ${data[1]};
+      
+      const ${svgName} = (props: CustomIconComponentProps): JSX.Element => ${data[1].replace(
+          '<svg',
+          '<svg {...props} ',
+        )};
       export default ${svgName};
       `,
         { parser: 'babel-ts' },
