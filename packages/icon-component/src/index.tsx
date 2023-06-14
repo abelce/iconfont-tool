@@ -1,6 +1,6 @@
-import Context from "./Context";
+import Context from './Context';
 
-export { default } from "./Icon";
+export { default } from './Icon';
+export { IconProvider };
 
 const IconProvider = Context.Provider;
-export { IconProvider };
