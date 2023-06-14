@@ -45,7 +45,7 @@
     "tslib": "^2.5.0"
   },
   "peerDependencies": {
-    "iconfont-extract-icon": ">=0.0.1",
+    "iconfont-extract-icon": ">=0.0.2",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   }
