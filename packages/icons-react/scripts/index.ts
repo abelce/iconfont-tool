@@ -79,7 +79,7 @@ const saveSvgList = async (dir: string, svgList: Array<string[]>) => {
       prettier.format(
         `
       import React from 'react';
-      import { CustomIconComponentProps } from 'iconfont-extract-icon/types';
+      import { CustomIconComponentProps } from 'iconfont-extract-icon/lib/types';
       
       const ${svgName} = (props: CustomIconComponentProps): JSX.Element => ${data[1].replace(
           '<svg',
