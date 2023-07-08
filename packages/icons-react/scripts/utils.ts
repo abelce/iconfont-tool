@@ -52,7 +52,7 @@ export const genSvgComponent = (name: string) => {
         import React from 'react';
         import Icon from 'iconfont-extract-icon';
         
-        import { IconBaseProps } from 'iconfont-extract-icon/types';
+        import { IconBaseProps } from 'iconfont-extract-icon/lib/types';
         import ${name}Svg from "../../svgs/${name}";
 
         const ${name} =  React.forwardRef<HTMLSpanElement, IconBaseProps>((props, ref): JSX.Element => {
