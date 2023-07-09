@@ -61,7 +61,7 @@ const createSVGFromSymbol = (prefix: string, str: string): Array<string[]> => {
             // remove id
             .replace(/ id="(.*?)" /, '')
             // remove fill attribute
-            .replace(/ fill="(.*?)"/, ''),
+            .replace(/ fill="(.*?)"/g, ''),
         ]);
       }
     });
