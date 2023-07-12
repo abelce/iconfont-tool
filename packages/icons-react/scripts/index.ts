@@ -77,6 +77,20 @@ const saveSvgList = async (dir: string, svgList: Array<string[]>) => {
     mkdirRecursive(svgFileName);
 
     await createAndSaveFile(
+      path.join(svgFileName, `${svgName}.svg`),
+      prettier.format(data[1], {
+        parser: 'babel-ts',
+      }),
+    );
+  }
+};
+const saveReactSvgList = async (dir: string, svgList: Array<string[]>) => {
+  for (let data of svgList) {
+    const svgName = data[0];
+    const svgFileName = `${dir}/react-svgs`;
+    mkdirRecursive(svgFileName);
+
+    await createAndSaveFile(
       path.join(svgFileName, `${svgName}.tsx`),
       prettier.format(
         `
@@ -131,6 +145,7 @@ const iconfontEXtract = async (options: Options) => {
 
   if (svgInfo.length) {
     await saveSvgList(outDir, svgInfo);
+    await saveReactSvgList(outDir, svgInfo);
     await genSvgComponents(outDir, svgInfo);
     // copyTypes(outDir)
   }
