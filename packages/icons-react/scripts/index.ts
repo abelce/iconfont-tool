@@ -76,10 +76,12 @@ const saveSvgList = async (dir: string, svgList: Array<string[]>) => {
     const svgFileName = `${dir}/svgs`;
     mkdirRecursive(svgFileName);
 
+    console.log(data[1]);
+
     await createAndSaveFile(
       path.join(svgFileName, `${svgName}.svg`),
       prettier.format(data[1], {
-        parser: 'babel-ts',
+        parser: 'html',
       }),
     );
   }
